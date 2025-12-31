@@ -1,17 +1,22 @@
 class Solution {
-    void gen(int[] nums,boolean[] arr,List<Integer> l,List<List<Integer>> ans){
-        if(l.size()==nums.length){
-            ans.add(new ArrayList(l));
+    void gen(int[] nums,int in,List<List<Integer>> ans){
+        if(in==nums.length){
+            List<Integer> l=new ArrayList<>();
+            for(int n:nums){
+                l.add(n);
+            }
+            ans.add(new ArrayList<>(l));
             return;
         }
          
-        for(int i=0;i<nums.length;i++){
-            if(arr[i])continue;
-            arr[i]=true;
-            l.add(nums[i]);
-            gen(nums,arr,l,ans);
-            arr[i]=false;
-            l.remove(l.size()-1);
+        for(int i=in;i<nums.length;i++){
+            int t=nums[in];
+            nums[in]=nums[i];
+            nums[i]=t;
+            gen(nums,in+1,ans);
+             t=nums[in];
+            nums[in]=nums[i];
+            nums[i]=t;
         }
             
         
@@ -20,7 +25,7 @@ class Solution {
     public List<List<Integer>> permute(int[] nums) {
          List<List<Integer>> ans=new ArrayList<>();
         
-         gen(nums, new boolean[nums.length],new ArrayList(),ans);
+         gen(nums,0,ans);
          return ans;
 
     }
