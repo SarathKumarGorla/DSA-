@@ -37,8 +37,8 @@ class Solution {
         boolean l=isBalanced(root.left);
         boolean r=isBalanced(root.right);
         
-        if(!l || !r)return false;
-        return true;
+        
+        return l &&r ;
 
     }
 }
