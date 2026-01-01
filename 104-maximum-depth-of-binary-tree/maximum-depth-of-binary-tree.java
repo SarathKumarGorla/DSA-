@@ -15,7 +15,9 @@
  */
 class Solution {
     int height(TreeNode node,int c){
-        if(node!=null){
+            if(node==null){
+                return 0;
+            }
             if(node.left==null && node.right==null){
             return 1;
             }
@@ -23,11 +25,10 @@ class Solution {
         int lh=height(node.left,c);
         int rh=height(node.right,c);
         return 1+Math.max(lh,rh);
-        }else{
-            return 0;
         }
         
-    }
+        
+    
     public int maxDepth(TreeNode root) {
          return height(root,0);
     }
