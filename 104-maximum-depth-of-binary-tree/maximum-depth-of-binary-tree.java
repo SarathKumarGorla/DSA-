@@ -18,9 +18,7 @@ class Solution {
             if(node==null){
                 return 0;
             }
-            if(node.left==null && node.right==null){
-            return 1;
-            }
+            
         
         int lh=height(node.left,c);
         int rh=height(node.right,c);
