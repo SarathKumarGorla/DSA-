@@ -22,11 +22,12 @@ class Solution {
             if(--v==0){
                 
                     ans=node;
-                
+                    return ;
             }
             FindSmall(node.right);
         }
     }
+
     public int kthSmallest(TreeNode root, int k) {
         v=k;
         FindSmall(root);
